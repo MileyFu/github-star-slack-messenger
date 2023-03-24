@@ -4,8 +4,8 @@ use slack_flows::send_message_to_channel;
 #[no_mangle]
 #[tokio::main(flavor = "current_thread")]
 pub async fn run() -> anyhow::Result<()> {
-    let login: &str = "jaykchen";
-    let owner: &str = "jaykchen";
+    let login: &str = "mileyfu";
+    let owner: &str = "mileyfu";
     let repo: &str = "a-test";
 
     listen_to_event(login, owner, repo, vec!["star"], |payload| {
@@ -17,8 +17,8 @@ pub async fn run() -> anyhow::Result<()> {
 }
 
 async fn handler(repo: &str, payload: EventPayload) {
-    let slack_workspace_name: &str = "ik8";
-    let slack_channel_name: &str = "general";
+    let slack_workspace_name: &str = "secondstate";
+    let slack_channel_name: &str = "github-status";
 
     if let EventPayload::UnknownEvent(e) = payload {
         let stargazers_count = e["repository"]["stargazers_count"].as_i64().unwrap_or(-1);
